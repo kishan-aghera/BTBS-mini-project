@@ -1,0 +1,2 @@
+class Busport < ApplicationRecord
+end
