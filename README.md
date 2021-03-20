@@ -1,24 +1,11 @@
-# README
+# Bus Ticket Booking System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* This is a mini-project for booking one-way bus trips.
 
-Things you may want to cover:
+* This app contains only 2 busports (AHM : Ahmedabad and RJT : Rajkot) are present and trips are only limited.
 
-* Ruby version
+* There is a facility to choose number of passengers (maximum : 4) for any trip.
 
-* System dependencies
+* Signing up is not required to use the app.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* The design of the app is very simple.
