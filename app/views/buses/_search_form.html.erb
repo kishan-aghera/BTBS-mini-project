@@ -1,0 +1,106 @@
+<%= form_with(url: "/buses", class:"align-center", method: "get", local: true) do %>
+  <% @busport_options = Busport.all.map { |busport| [busport.code, busport.id] } %>
+  <% @year_options = Bus.all.map { |bus| bus.scheduled_on.year }.uniq %>
+  <% @month_options = Bus.all.map { |bus| bus.scheduled_on.month }.uniq %>
+  <% @day_options = Bus.all.map { |bus| bus.scheduled_on.day }.uniq %>
+  <table class="table center mx-auto">
+    <tbody>
+      <tr>
+        <td></td> 
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        
+        <td>
+          <div class="select is-rounded">
+            <%= select_tag(:from_busport_id, options_for_select(@busport_options, selected: params[:from_busport_id]), { prompt: 'From?' }) %>
+          </div>
+        </td>
+          
+        <td>
+          <div class="select is-rounded">
+            <%= select_tag(:to_busport_id, options_for_select(@busport_options, selected: params[:to_busport_id]), { prompt: 'To?' }) %>
+          </div>
+        </td>
+          
+        <td>
+          <div class="select">
+            <%= select_tag(:pax, options_for_select(1..4, selected: params[:pax]), { prompt: 'Passengers' }) %>
+          </div>
+        </td>
+        
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        
+        <td>
+          <div class="select">
+            <%= select_tag(:day, options_for_select(@day_options, selected: params[:day])) %>
+          </div>
+        </td>
+
+        <td>
+          <div class="select">
+            <%= select_tag(:month, options_for_select(@month_options, selected: params[:month])) %>
+          </div>
+        </td>
+
+        <td>
+          <div class="select">
+            <%= select_tag(:year, options_for_select(@year_options, selected: params[:year])) %>
+          </div>
+        </td>
+        
+        <td></td>
+        <td></td>
+        <td></td>
+        
+        <td>
+          <%= submit_tag("Show buses", class: "btn btn-secondary is-dark is-outlined") %>
+        </td>
+        
+        <td></td> 
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+<% end %>

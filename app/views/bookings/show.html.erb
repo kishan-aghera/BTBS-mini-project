@@ -1,0 +1,94 @@
+<div class="col d-flex justify-content-center">
+  <div class="card text-center">
+    <div class="card-header">
+      <h2>
+        Trip summary
+      </h2>
+      <%= @booking.bus.scheduled_on.strftime('%d %B %Y') %>
+      <p>
+        YOUR BOOKING NUMBER (PNR) IS <strong>BTBS<%= @booking.id %></strong>
+      </p>
+      <p>
+        Ticket Number: <b><%= sprintf('%010d', rand(10**10)) %></b>
+      </p>
+    </div>
+
+    <div class="card-body">
+      <table class="table is-fullwidth">
+        <thead>
+          <tr>
+            <th>
+              Departure
+            </th>
+            <th>
+              Arrival
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= @booking.bus.from_busport.code %> <%= @booking.bus.scheduled_on.strftime('%H:%M') %>
+            </td>
+            <td>
+              <%= @booking.bus.to_busport.code %> <%= (@booking.bus.scheduled_on + (@booking.bus.duration/60).to_i.hours).strftime('%H:%M') %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+      <h1 class="title">
+        Passenger details
+      </h1>
+      <table class="table is-fullwidth has-text-left">
+        <thead>
+          <tr>
+            <th>
+              Passenger name
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @booking.passengers.each_with_index do |passenger, idx| %>
+            <tr>
+              <td>
+                <%= passenger.name %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <hr>
+      <h1 class="title">
+        Contact details
+      </h1>
+      <table class="table is-fullwidth has-text-left">
+        <thead>
+          <tr>
+            <th>
+              Passenger name
+            </th>
+            <th>
+              Email
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @booking.passengers.each_with_index do |passenger, idx| %>
+            <tr>
+              <td>
+                <%= passenger.name %>
+              </td>
+              <td>
+                <%= passenger.email %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+      <%= link_to 'Home', root_path, class: "btn btn-light" %>
+      <input type="button" value="Print ticket" class="btn btn-light" onClick="window.print()">
+    </div>
+  </div>
+</div>
