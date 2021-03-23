@@ -1,6 +1,7 @@
 class BusesController < ApplicationController
   def index
     if params.has_key?(:day) && params.has_key?(:month) && params.has_key?(:year)
+      # binding.pry
       if params[:from_busport_id].blank?
         flash.now[:alert] = "Departure busport is missing"
       elsif params[:to_busport_id].blank?
