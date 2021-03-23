@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Passenger, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
   before(:all) do
     @passenger = create(:passenger)
   end
@@ -35,5 +34,15 @@ RSpec.describe Passenger, type: :model do
       passenger = Passenger.new(name: "Name", email: "sample@example.com", booking_id: 1).save
       expect(passenger).to eq(true)
     end
+  end
+
+  it "triggers normalize_name on save" do
+    expect(@passenger).to receive(:normalize_name)
+    @passenger.save
+  end
+
+  it "triggers email_downcase on save" do
+    expect(@passenger).to receive(:email_downcase)
+    @passenger.save
   end
 end
