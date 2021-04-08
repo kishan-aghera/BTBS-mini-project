@@ -71,7 +71,7 @@ RSpec.describe "Buses", type: :request do
       expect(response).to_not render_template("search_form_results")
     end
 
-    it "flashes an alert message when from and to is same" do # Not Working
+    it "flashes an alert message when from and to is same" do
       get buses_path, 
       :params => { 
         bus: { 
