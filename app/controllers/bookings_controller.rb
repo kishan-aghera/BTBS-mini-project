@@ -11,10 +11,10 @@ class BookingsController < ApplicationController
     if @booking.save
       flash[:notice] = 'Booking successfully completed!'
       redirect_to booking_path(@booking)
-    else
-      flash[:alert] = 'An error occured!'
-      # binding.pry
-      redirect_to new_booking_path(bus: params["booking"]["bus_id"], pax: params["booking"]["passengers_attributes"].keys.length)
+    # else
+    #   flash[:alert] = 'An error occured!'
+    #   # binding.pry
+    #   redirect_to new_booking_path(bus: params["booking"]["bus_id"], pax: params["booking"]["passengers_attributes"].keys.length)
     end
   end
 

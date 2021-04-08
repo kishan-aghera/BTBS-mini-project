@@ -31,6 +31,21 @@ RSpec.describe "Buses", type: :request do
       expect(flash[:alert]).to be_present
     end
 
+    it "flashes no alert message when every params are passed" do # Working
+      get buses_path,
+      :params => { 
+        bus: { 
+          from_busport_id: create(:bus).id.to_s, 
+          to_busport_id: create(:bus).id.to_s, 
+          pax: "1", 
+          day: "25", 
+          month: "12", 
+          year: "2020" 
+        }
+      }
+      expect(flash[:alert]).to_not be_present
+    end
+    
     it "flashes an alert message when to bus is blank" do # Not Working
       get buses_path
       #, :params => { 
