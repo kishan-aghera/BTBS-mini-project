@@ -24,22 +24,6 @@ RSpec.describe "Bookings", type: :request do
       }
       expect(response).to have_http_status(302)
     end
-
-    # context "invalid params" do
-    #   let :booking do
-    #     post bookings_path, :params => { 
-    #       booking: { 
-    #         bus_id: create(:bus).id, passenger: attributes_for(:passenger, name: nil) 
-    #       } 
-    #     }
-    #   end
-
-    #   it "does not add passenger and re-render :new page" do # Not Working
-    #     expect { booking }.to_not change(Booking, :count)
-    #     # expect(response).to be_redirect
-    #     # expect(response).to render_template("new")
-    #   end
-    # end
   end
 
   describe "GET /new" do
