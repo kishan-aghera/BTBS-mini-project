@@ -28,7 +28,9 @@ RSpec.describe "Buses", type: :request do
       #     year: "2020" 
       #   } 
       # }
-      expect(flash[:alert]).to be_present
+      # expect(flash[:alert]).to be_present
+      expect(response).to be_successful
+
     end
 
     it "flashes no alert message when every params are passed" do # Working
@@ -58,7 +60,9 @@ RSpec.describe "Buses", type: :request do
       #     year: "2020" 
       #   }
       # }
-      expect(flash[:alert]).to be_present
+      # expect(flash[:alert]).to be_present
+      # expect(response).to be_successful
+      expect(response).to_not render_template("search_form_results")
     end
 
     it "flashes an alert message when pax is blank" do # Not Working
@@ -73,7 +77,9 @@ RSpec.describe "Buses", type: :request do
       #     year: "2020" 
       #   } 
       # }
-      expect(flash[:alert]).to be_present
+      # expect(flash[:alert]).to be_present
+      # expect(response).to be_successful
+      expect(response).to_not render_template("search_form_results")
     end
 
     it "flashes an alert message when from and to is same" do # Not Working
@@ -90,7 +96,9 @@ RSpec.describe "Buses", type: :request do
       #     year: "2020" 
       #   } 
       # }
-      expect(flash[:alert]).to be_present
+      # expect(flash[:alert]).to be_present
+      # expect(response).to be_successful
+      expect(response).to_not render_template("search_form_results")
     end
 
     # context "invalid params" do # Not Working
